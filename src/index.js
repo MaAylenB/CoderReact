@@ -10,187 +10,187 @@ root.render(
 );
 
 const productos = [
-  // Abrigos
+
   {
       id: "llavero-01",
       titulo: "Llavero Amelia",
       imagen: "./img/bijouterie/llavero1.jpg",
       categoria: {
           nombre: "LLavero",
-          id: "llavero01"
+          id: "bijou"
       },
       precio: 2500
   },
   {
-      id: "abrigo-02",
-      titulo: "Abrigo 02",
-      imagen: "./img/abrigos/02.jpg",
+      id: "llavero-02",
+      titulo: "Llavero Cala",
+      imagen: "/img/bijouterie/llavero2.jpg",
       categoria: {
-          nombre: "Abrigos",
-          id: "abrigos"
+          nombre: "Llavero",
+          id: "bijou"
       },
-      precio: 1000
+      precio: 3500
   },
   {
-      id: "abrigo-03",
-      titulo: "Abrigo 03",
-      imagen: "./img/abrigos/03.jpg",
+      id: "pulsera-03",
+      titulo: "Pulsera Paz",
+      imagen: "./img/bijouterie/bijou3.jpg",
       categoria: {
-          nombre: "Abrigos",
-          id: "abrigos"
+          nombre: "Pulsera 03",
+          id: "bijou"
       },
-      precio: 1000
+      precio: 4000
   },
   {
-      id: "abrigo-04",
-      titulo: "Abrigo 04",
-      imagen: "./img/abrigos/04.jpg",
+      id: "pulsera-04",
+      titulo: "Pulsera Vida",
+      imagen: "./img/bijouterie/bijou4.jpg",
       categoria: {
-          nombre: "Abrigos",
-          id: "abrigos"
+          nombre: "Pulsera 04",
+          id: "bijou"
       },
-      precio: 1000
+      precio: 3500
   },
   {
-      id: "abrigo-05",
-      titulo: "Abrigo 05",
-      imagen: "./img/abrigos/05.jpg",
+      id: "choker-05",
+      titulo: "Choker Linda",
+      imagen: "./img/bijouterie/bijou5.jpg",
       categoria: {
-          nombre: "Abrigos",
-          id: "abrigos"
+          nombre: "Pulsera 05",
+          id: "bijou"
       },
-      precio: 1000
+      precio: 4500
   },
-  // Camisetas
+  
   {
-      id: "camiseta-01",
-      titulo: "Camiseta 01",
-      imagen: "./img/camisetas/01.jpg",
+      id: "billetera01",
+      titulo: "Billetera Clara",
+      imagen: "./img/billeteras/billetera1.jpeg",
       categoria: {
-          nombre: "Camisetas",
-          id: "camisetas"
+          nombre: "billeteras",
+          id: "Billeteras"
       },
-      precio: 1000
-  },
-  {
-      id: "camiseta-02",
-      titulo: "Camiseta 02",
-      imagen: "./img/camisetas/02.jpg",
-      categoria: {
-          nombre: "Camisetas",
-          id: "camisetas"
-      },
-      precio: 1000
+      precio: 5500
   },
   {
-      id: "camiseta-03",
-      titulo: "Camiseta 03",
-      imagen: "./img/camisetas/03.jpg",
+    id: "billetera02",
+    titulo: "Billetera Ana",
+    imagen: "./img/billeteras/billetera2.jpeg",
       categoria: {
-          nombre: "Camisetas",
-          id: "camisetas"
+        nombre: "billeteras",
+        id: "Billeteras"
       },
-      precio: 1000
+      precio: 5000
   },
   {
-      id: "camiseta-04",
-      titulo: "Camiseta 04",
-      imagen: "./img/camisetas/04.jpg",
+    id: "billetera03",
+    titulo: "Billetera Alessia",
+    imagen: "./img/billeteras/billetera3.jpeg",
       categoria: {
-          nombre: "Camisetas",
-          id: "camisetas"
+        nombre: "billeteras",
+        id: "Billeteras"
       },
-      precio: 1000
+      precio: 5500
   },
   {
-      id: "camiseta-05",
-      titulo: "Camiseta 05",
-      imagen: "./img/camisetas/05.jpg",
+    id: "billetera04",
+    titulo: "Billetera Camila",
+    imagen: "./img/billeteras/billetera4.jpeg",
       categoria: {
-          nombre: "Camisetas",
-          id: "camisetas"
+        nombre: "billeteras",
+        id: "Billeteras"
       },
-      precio: 1000
+      precio: 7500
   },
   {
-      id: "camiseta-06",
-      titulo: "Camiseta 06",
-      imagen: "./img/camisetas/06.jpg",
+    id: "billetera05",
+    titulo: "Billetera Gina",
+    imagen: "./img/billeteras/billetera5.jpeg",
       categoria: {
-          nombre: "Camisetas",
-          id: "camisetas"
+        nombre: "billeteras",
+        id: "Billeteras"
       },
-      precio: 1000
+      precio: 4500
   },
   {
-      id: "camiseta-07",
-      titulo: "Camiseta 07",
-      imagen: "./img/camisetas/07.jpg",
+    id: "billetera06",
+    titulo: "Billetera Geraldine",
+    imagen: "./img/billeteras/billetera6.jpeg",
       categoria: {
-          nombre: "Camisetas",
-          id: "camisetas"
+        nombre: "billeteras",
+        id: "Billeteras"
       },
-      precio: 1000
+      precio: 8000
   },
   {
-      id: "camiseta-08",
-      titulo: "Camiseta 08",
-      imagen: "./img/camisetas/08.jpg",
+    id: "billetera07",
+    titulo: "Billetera Silvina",
+    imagen: "./img/billeteras/billetera7.jpeg",
       categoria: {
-          nombre: "Camisetas",
-          id: "camisetas"
+        nombre: "billeteras",
+        id: "Billeteras"
       },
-      precio: 1000
-  },
-  // Pantalones
-  {
-      id: "pantalon-01",
-      titulo: "Pantalón 01",
-      imagen: "./img/pantalones/01.jpg",
-      categoria: {
-          nombre: "Pantalones",
-          id: "pantalones"
-      },
-      precio: 1000
+      precio: 8000
   },
   {
-      id: "pantalon-02",
-      titulo: "Pantalón 02",
-      imagen: "./img/pantalones/02.jpg",
+    id: "billetera08",
+    titulo: "Billetera Ceci",
+    imagen: "./img/billeteras/billetera8.jpeg",
       categoria: {
-          nombre: "Pantalones",
-          id: "pantalones"
+        nombre: "billeteras",
+        id: "Billeteras"
       },
-      precio: 1000
+      precio: 9000
+  },
+
+  {
+      id: "cartera01",
+      titulo: "Cartera Guada",
+      imagen: "./img/carteras/cartera1.jpeg",
+      categoria: {
+          nombre: "carteras",
+          id: "carteras"
+      },
+      precio: 15000
   },
   {
-      id: "pantalon-03",
-      titulo: "Pantalón 03",
-      imagen: "./img/pantalones/03.jpg",
+    id: "cartera02",
+    titulo: "Cartera Wayra",
+    imagen: "./img/carteras/cartera2.jpeg",
       categoria: {
-          nombre: "Pantalones",
-          id: "pantalones"
+        nombre: "carteras",
+        id: "carteras"
       },
-      precio: 1000
+      precio: 10000
   },
   {
-      id: "pantalon-04",
-      titulo: "Pantalón 04",
-      imagen: "./img/pantalones/04.jpg",
+    id: "cartera03",
+    titulo: "Cartera Caro",
+    imagen: "./img/carteras/cartera3.jpeg",
       categoria: {
-          nombre: "Pantalones",
-          id: "pantalones"
+        nombre: "carteras",
+        id: "carteras"
       },
-      precio: 1000
+      precio: 9500
   },
   {
-      id: "pantalon-05",
-      titulo: "Pantalón 05",
-      imagen: "./img/pantalones/05.jpg",
+    id: "cartera04",
+    titulo: "Cartera Ari",
+    imagen: "./img/carteras/cartera4.jpeg",
       categoria: {
-          nombre: "Pantalones",
-          id: "pantalones"
+        nombre: "carteras",
+        id: "carteras"
       },
-      precio: 1000
+      precio: 11000
+  },
+  {
+    id: "cartera05",
+    titulo: "Cartera Eri",
+    imagen: "./img/carteras/cartera5.jpeg",
+      categoria: {
+        nombre: "carteras",
+        id: "carteras"
+      },
+      precio: 25000
   }
 ];
