@@ -15,4 +15,4 @@ const ItemList = ( {productos, titulo} ) => {
   )
 }
 
-export default ItemList
+export default ItemList;

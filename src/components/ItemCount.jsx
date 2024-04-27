@@ -15,4 +15,4 @@ const ItemCount = ( {cantidad, handleRestar, handleSumar, handleAgregar} ) => {
   )
 }
 
-export default ItemCount
+export default ItemCount;

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import ItemDetail from "./ItemDetail";
 import { useParams } from "react-router-dom";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, query, where } from "firebase/firestore";
 import { db } from "../firebase/config";
 
 
@@ -12,13 +12,16 @@ const ItemDetailContainer = () => {
 
     useEffect(() => {
 
-      const docRef = doc(db, "productos", id);
-      getDoc(docRef)
-        .then((resp) => {
-          setItem(
-            { ...resp.data(), id: resp.id }
-          );
-        })
+    const docRef = doc(db, "productos", id);
+
+    const q = categoría ? query(productosRef, where ("categoría", "==", categoría)): productosRef;
+
+    getDoc (q)
+      .then ((resp) => {
+        setItem (
+          { ...resp.data (), id: resp.id}
+        );
+      })
 
     }, [id])
     
@@ -30,4 +33,4 @@ const ItemDetailContainer = () => {
   )
 }
 
-export default ItemDetailContainer
+export default ItemDetailContainer;

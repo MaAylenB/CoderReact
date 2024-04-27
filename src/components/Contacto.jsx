@@ -26,4 +26,4 @@ const Contacto = () => {
   )
 }
 
-export default Contacto
+export default Contacto;
