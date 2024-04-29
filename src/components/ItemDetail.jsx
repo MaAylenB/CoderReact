@@ -19,6 +19,10 @@ const ItemDetail = ( {item} ) => {
         cantidad < item.stock && setCantidad(cantidad + 1)
     }
 
+    const handleAgregar = () =>  {
+      console.log (  { ...item, cantidad});
+    }
+
   return (
     <div className="container">
         <div className="producto-detalle">

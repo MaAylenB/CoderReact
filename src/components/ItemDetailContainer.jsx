@@ -14,9 +14,8 @@ const ItemDetailContainer = () => {
 
     const docRef = doc(db, "productos", id);
 
-    const q = categoría ? query(productosRef, where ("categoría", "==", categoría)): productosRef;
-
-    getDoc (q)
+    
+    getDoc ()
       .then ((resp) => {
         setItem (
           { ...resp.data (), id: resp.id}
