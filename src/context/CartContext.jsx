@@ -1,57 +1,101 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
+import Swal from 'sweetalert2';
+
+const CartContext = createContext()
+
+const CartProvider = ({ children }) => {
+
+    const [cartListItems, setCartListItems] = useState(JSON.parse(localStorage.getItem('products')) || [])
+    const [totalPrice, setTotalPrice] = useState(JSON.parse(localStorage.getItem('total-price')) || 0)
+
+    // Función para el borrado de productos
+    const deleteProduct = (prod) => {
+
+        // Filtro los productos distintos al que quiero borrar y los seteo en el context, por lo que eliminé el que selecciona el usuario
+        const filteredProduct = cartListItems.filter(cartItem => cartItem !== prod)
+        setCartListItems(filteredProduct)
+        localStorage.setItem('products', JSON.stringify(filteredProduct))
+
+        // Actualizo el precio total a mostrar
+        setTotalPrice(totalPrice - prod.price * prod.quantity)
+        localStorage.setItem('total-price', totalPrice - prod.price * prod.quantity)
+    }
 
 
-export const CartContext = createContext();
+    const addProductToCart = (product) => {
 
-const carritoInicial = JSON.parse(localStorage.getItem("carrito")) || [];
+        // Busco en el cartListItems el producto a agregar, si no lo encuentra (carga por primera vez), lo agrega
+        let isInCart = cartListItems.find(cartItem => cartItem.id === product.id)
 
-export const CartProvider = ({children}) => {
+        if (!isInCart) {
+            setCartListItems(cartListItems => [...cartListItems, product])
+            setTotalPrice(totalPrice + product.price * product.quantity)
+            localStorage.setItem('products', JSON.stringify([...cartListItems, product]))
+            localStorage.setItem('total-price', totalPrice + product.price * product.quantity)
 
-    const [carrito, setCarrito] = useState(carritoInicial);
+            Swal.fire({
+                title: 'Agregado!',
+                text: `Se agregaron ${product.quantity} productos correctamente`,
+                icon: 'success',
+                confirmButtonText: 'Aceptar'
+            })
 
-    const agregarAlCarrito = (item, cantidad) => {
-        const itemAgregado = { ...item, cantidad };
-
-        const nuevoCarrito = [...carrito];
-        const estaEnElCarrito = nuevoCarrito.find((producto) => producto.id === itemAgregado.id);
-
-        if (estaEnElCarrito) {
-            estaEnElCarrito.cantidad += cantidad;
         } else {
-            nuevoCarrito.push(itemAgregado);
+
+            // La siguiente lógica sirve para actualizar la cantidad del carrito en caso que el usuario 
+            // vuelva a elegir la misma bicicleta, incluye lógica para que nunca supere el stock disponible
+
+            const refreshQuantity = cartListItems.find(cartItem => cartItem.id === product.id)
+
+            if (refreshQuantity.quantity + product.quantity <= product.stock) {
+
+                refreshQuantity.quantity += product.quantity
+
+                // Filtro todos los productos distintos al elegido, los vuelvo a setear en el setCartListItems
+                // para así haber eliminado el que voy a actualizar, luego le agrego a esos productos 
+                // el nuevo con la cantidad modificada
+                const filteredProduct = cartListItems.filter(cartItem => cartItem.id !== product.id)
+                setCartListItems(filteredProduct)
+                setCartListItems(filteredProduct => [...filteredProduct, refreshQuantity])
+                localStorage.setItem('products', JSON.stringify([...filteredProduct, refreshQuantity]))
+
+                setTotalPrice(totalPrice + product.price * product.quantity)
+                localStorage.setItem('total-price', totalPrice + product.price * product.quantity)
+
+
+                Swal.fire({
+                    title: 'Atención!',
+                    text: `Ya tenías de este producto en el carrito, agregamos ${product.quantity} más`,
+                    icon: 'info',
+                    confirmButtonText: 'Aceptar'
+                })
+
+            } else {
+                Swal.fire({
+                    title: 'Error',
+                    text: `Ya tienes el máximo de cantidad de este producto, nuestro stock es de ${product.stock}`,
+                    icon: 'error',
+                    confirmButtonText: 'Aceptar'
+                })
+            }
         }
-        setCarrito(nuevoCarrito);
     }
 
-    const cantidadEnCarrito = () => {
-        return carrito.reduce((acc, prod) => acc + prod.cantidad, 0);
+    const data = {
+        cartListItems,
+        setCartListItems,
+        addProductToCart,
+        totalPrice,
+        setTotalPrice,
+        deleteProduct
     }
-
-    const precioTotal = () => {
-        return carrito.reduce((acc, prod) => acc + prod.precio * prod.cantidad, 0);
-    }
-
-    const vaciarCarrito = () => {
-        setCarrito([]);
-    }
-
-    useEffect(() => {
-        localStorage.setItem("carrito", JSON.stringify(carrito));
-    }, [carrito])
-    
 
     return (
-        <CartContext.Provider value={ {
-            carrito,
-            agregarAlCarrito,
-            cantidadEnCarrito,
-            precioTotal,
-            vaciarCarrito
-        } }>
+        <CartContext.Provider value={data}>
             {children}
         </CartContext.Provider>
     )
-
-
-
 }
+
+export default CartContext
+export { CartProvider }

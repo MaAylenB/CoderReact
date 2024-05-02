@@ -1,0 +1,30 @@
+header.header-main {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    color: #804dbb;
+}
+
+header img.aime-store{
+    width: 150px;
+    min-width: 100px;
+    border-radius: 50%;
+}
+
+.header__child{
+    display: flex;
+    align-items: center;
+}
+
+header .nav-btn:hover{
+    color: #804dbb;
+    transform: scale(1.1);
+    transition: .5s;
+}
+
+
+@media (max-width: 340px) {
+    img.logo-bike-store{
+        width: 100px;
+    }
+}
